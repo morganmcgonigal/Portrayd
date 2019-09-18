@@ -1,0 +1,13 @@
+@(universes : List[Universe])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Universes</title>
+    </head>
+    <body>
+        @for(universe<-universes){
+        @universe.getUniverseName
+        }
+    </body>
+</html>

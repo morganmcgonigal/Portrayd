@@ -3,14 +3,10 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.TestController.getTest
-POST    /                           controllers.TestController.postTest
-
-GET     /test                       controllers.TestController.getTest
-POST    /test                       controllers.TestController.postTest
-
-GET     /testdb                       controllers.TestController.getTestDb
-POST    /testdb                       controllers.TestController.postTestDb
+GET     /                           controllers.MainController.getIndex
+GET     /characterroles/:id         controllers.CharacterRoleController.getRole(id : Integer)
+GET     /city/:id                   controllers.CityController.getCity(id : Integer)
+GET     /country/:id                controllers.CountryController.getCountry(id : Integer)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
