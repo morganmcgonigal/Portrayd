@@ -1,0 +1,32 @@
+@(landmarks : List[Landmark], countries : List[Country])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "landmarkName" placeholder="Landmark Name" required>
+
+            <br>
+
+            <select name = "country" required>
+                <option value = "" disabled selected>Country</option>
+                @for(country<-countries){
+                <option value="@country.getCountryId">@country.getCountryName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "file" name = "landmarkPicture" accept="image/*">
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

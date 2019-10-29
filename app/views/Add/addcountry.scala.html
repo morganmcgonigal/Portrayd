@@ -1,0 +1,39 @@
+@(countries : List[Country], planets : List[Planet], languages : List[Language])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "countryName" placeholder="Country Name" required>
+
+            <br>
+
+            <select name = "planet" required>
+                <option value = "" disabled selected>Planet</option>
+                @for(planet<-planets){
+                <option value="@planet.getPlanetId">@planet.getPlanetName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "file" name = "cityPicture" accept="image/*">
+
+            <br>
+
+            <select name = "language" required>
+                <option value = "" selected>Native Language</option>
+                @for(language<-languages){
+                <option value="@language.getLanguageId">@language.getLanguageName</option>
+                }
+            </select>
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

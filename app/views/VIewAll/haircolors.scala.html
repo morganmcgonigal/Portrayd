@@ -1,0 +1,14 @@
+@(hairColors : List[CharacterHairColor])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        @for(hairColor<-hairColors){
+        @hairColor.getHairColorName
+        <br>
+        }
+    </body>
+</html>

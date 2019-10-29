@@ -1,0 +1,21 @@
+@(eyeColors : List[CharacterEyeColor])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "eyeColorName" placeholder="Eye Color Name" required>
+
+            <br>
+
+            <input type = "text" name = "eyeColorDescription" placeholder = "Eye Color Description">
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

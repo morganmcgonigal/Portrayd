@@ -1,0 +1,14 @@
+@(weapons : List[Weapon])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        @for(weapon<-weapons){
+        @weapon.getWeaponName
+        <br>
+        }
+    </body>
+</html>

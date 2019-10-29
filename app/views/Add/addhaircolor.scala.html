@@ -1,0 +1,21 @@
+@(hairColors : List[CharacterHairColor])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "hairColorName" placeholder="Hair Color Name" required>
+
+            <br>
+
+            <input type = "text" name = "hairColorDescription" placeholder = "Hair Color Description">
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

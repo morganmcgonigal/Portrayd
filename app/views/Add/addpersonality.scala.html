@@ -1,0 +1,21 @@
+@(personalities : List[CharacterPersonalityType])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "personalityName" placeholder="Personality Type Name" required>
+
+            <br>
+
+            <input type = "text" name = "personalityDescription" placeholder="Personality Type Description">
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

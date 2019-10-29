@@ -1,0 +1,43 @@
+@(city : City, countries : List[Country])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "cityName" placeholder="City Name" value = "@city.getCityName" required>
+
+            <br>
+
+            <select name = "country" required>
+                @for(country<-countries){
+                @if(country.getCountryId==city.getCountryId){
+                <option value = "@country.getCountryId" selected>@country.getCountryName</option>
+                } else{
+                <option value = "@country.getCountryId">@country.getCountryName</option>
+                }
+                }
+            </select>
+
+            <br>
+
+            @if(city.isCapitalCity==true){
+            <input type = "checkbox" name = "isCapitalCity" value = "true" checked>Capital City
+            } else{
+            <input type = "checkbox" name = "isCapitalCity" value = "true">Capital city
+            }
+
+            <br>
+
+            <input type = "file" name = "cityPicture" accept="image/*">
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

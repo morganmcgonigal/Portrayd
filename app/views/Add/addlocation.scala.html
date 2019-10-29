@@ -1,0 +1,45 @@
+@(locations : List[Location], universes : List[Universe], locationTypes : List[LocationType])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "locationName" placeholder="Location Name" required>
+
+            <br>
+
+            <select name = "locationType" required>
+                <option value = "" disabled selected>Location Type</option>
+                @for(locationType<-locationTypes){
+                <option value="@locationType.getLocationTypeId">@locationType.getLocationTypeName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "text" name = "locationHistory" placeholder="Location History">
+
+            <br>
+
+            <select name = "universe" required>
+                <option value = "" disabled selected>Universe</option>
+                @for(universe<-universes){
+                <option value="@universe.getUniverseId">@universe.getUniverseName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "file" name = "locationPicture" accept="image/*">
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

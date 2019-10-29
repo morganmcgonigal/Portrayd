@@ -1,0 +1,32 @@
+@(planets : List[Planet], universes : List[Universe])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "planetName" placeholder="Planet Name" required>
+
+            <br>
+
+            <select name = "universe" required>
+                <option value = "" disabled selected>Universe</option>
+                @for(universe<-universes){
+                <option value="@universe.getUniverseId">@universe.getUniverseName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "file" name = "planetPicture" accept="image/*">
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

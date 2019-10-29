@@ -1,0 +1,19 @@
+@(role : CharacterRole)
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Edit Character Roles</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "roleName" placeholder="Role Name" value = "@role.getCharacterRoleName" required>
+
+            <input type="text" name = "roleDescription" placeholder="Role Description" value = "@role.getCharacterRoleDescription">
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

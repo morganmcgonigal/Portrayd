@@ -1,0 +1,14 @@
+@(races : List[Race])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        @for(race<-races){
+        @race.getRaceName
+        <br>
+        }
+    </body>
+</html>

@@ -1,0 +1,39 @@
+@(universes : List[Universe])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "universeName" placeholder="Universe Name" required>
+
+            <br>
+
+            <input type = "text" name = "universeDesc" placeholder="Universe Description">
+
+            <br>
+
+            <input type = "text" name = "universeGenre" placeholder="Universe Genre">
+
+            <br>
+
+            <input type = "text" name = "universeHistory" placeholder = "Universe History">
+
+            <br>
+
+            <input type = "text" name = "universeNotes" placeholder="Universe Notes">
+
+            <br>
+
+            <input type = "file" name = "universePicture" accept="image/*">
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

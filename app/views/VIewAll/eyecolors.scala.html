@@ -1,0 +1,14 @@
+@(eyeColors : List[CharacterEyeColor])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        @for(eyeColor<-eyeColors){
+        @eyeColor.getEyeColorName
+        <br>
+        }
+    </body>
+</html>

@@ -1,0 +1,14 @@
+@(languages : List[Language])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        @for(language<-languages){
+        @language.getLanguageName
+        <br>
+        }
+    </body>
+</html>

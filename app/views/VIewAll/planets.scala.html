@@ -1,0 +1,14 @@
+@(planets : List[Planet])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        @for(planet<-planets){
+        @planet.getPlanetName
+        <br>
+        }
+    </body>
+</html>

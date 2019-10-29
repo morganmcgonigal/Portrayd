@@ -1,0 +1,14 @@
+@(personalityTypes : List[CharacterPersonalityType])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        @for(personalityType<-personalityTypes){
+        @personalityType.getPersonalityTypeName
+        <br>
+        }
+    </body>
+</html>

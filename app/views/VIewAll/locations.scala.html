@@ -1,0 +1,14 @@
+@(locations : List[Location])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        @for(location<-locations){
+        @location.getLocationName
+        <br>
+        }
+    </body>
+</html>

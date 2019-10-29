@@ -4,9 +4,112 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.MainController.getIndex
-GET     /characterroles/:id         controllers.CharacterRoleController.getRole(id : Integer)
+
+# CHARACTER ROLE
+GET     /characterrole/:id         controllers.CharacterRoleController.getRole(id : Integer)
+GET     /addrole                    controllers.CharacterRoleController.getAddRole
+POST    /addrole                   controllers.CharacterRoleController.postAddRole
+GET    /characterroles             controllers.CharacterRoleController.getAllRoles
+GET     /editrole/:id               controllers.CharacterRoleController.getRoleEdit(id : Integer)
+POST    /editrole/:id               controllers.CharacterRoleController.postRoleEdit(id : Integer)
+
+# CITY
 GET     /city/:id                   controllers.CityController.getCity(id : Integer)
+GET     /addcity                    controllers.CityController.getAddCity
+POST    /addcity                    controllers.CityController.postAddCity
+GET     /cities                    controllers.CityController.getAllCities
+GET     /editcity/:id               controllers.CityController.getCityEdit(id : Integer)
+POST    /editcity/:id               controllers.CityController.postCityEdit(id : Integer)
+
+# COUNTRY
 GET     /country/:id                controllers.CountryController.getCountry(id : Integer)
+GET     /addcountry                 controllers.CountryController.getAddCountry
+POST    /addcountry                 controllers.CountryController.postAddCountry
+GET     /countries                    controllers.CountryController.getAllCountries
+
+# EYE COLOR
+GET     /eyecolor/:id               controllers.EyeColorController.getEyeColor(id : Integer)
+GET     /addeyecolor                controllers.EyeColorController.getAddEyeColor
+POST    /addeyecolor                controllers.EyeColorController.postAddEyeColor
+GET     /eyecolors                    controllers.EyeColorController.getAllEyeColors
+
+# GENDER
+GET     /gender/:id                 controllers.GenderController.getGender(id : Integer)
+GET     /addgender                  controllers.GenderController.getAddGender
+POST    /addgender                  controllers.GenderController.postAddGender
+GET     /genders                    controllers.GenderController.getAllGenders
+
+# HAIR COLOR
+GET     /haircolor/:id              controllers.HairColorController.getHairColor(id : Integer)
+GET     /addhaircolor               controllers.HairColorController.getAddHairColor
+POST    /addhaircolor               controllers.HairColorController.postAddHairColor
+GET     /haircolors                    controllers.HairColorController.getAllHairColors
+
+# LANDMARK
+GET     /landmark/:id               controllers.LandmarkController.getLandmark(id : Integer)
+GET     /addlandmark                controllers.LandmarkController.getAddLandmark
+POST    /addlandmark                controllers.LandmarkController.postAddLandmark
+GET     /landmarks                    controllers.LandmarkController.getAllLandmarks
+
+# LANGUAGE
+GET     /language/:id               controllers.LanguageController.getLanguage(id : Integer)
+GET     /addlanguage                controllers.LanguageController.getAddLanguage
+POST    /addlanguage                controllers.LanguageController.postAddLanguage
+GET     /languages                    controllers.LanguageController.getAllLanguages
+
+# LOCATION
+GET     /location/:id               controllers.LocationController.getLocation(id : Integer)
+GET     /addlocation                controllers.LocationController.getAddLocation
+POST    /addlocation                controllers.LocationController.postAddLocation
+GET     /locations                    controllers.LocationController.getAllLocations
+
+# LOCATION TYPE
+GET     /locationtype/:id           controllers.LocationTypeController.getLocationType(id : Integer)
+GET     /addlocationtype            controllers.LocationTypeController.getAddLocationType
+POST    /addlocationtype            controllers.LocationTypeController.postAddLocationType
+GET     /locationtypes                    controllers.LocationTypeController.getAllLocationTypes
+
+# CHARACTER
+GET     /character/:id              controllers.NewCharacterController.getCharacter(id : Integer)
+GET     /addcharacter               controllers.NewCharacterController.getAddCharacter
+POST    /addcharacter               controllers.NewCharacterController.postAddCharacter
+GET     /characters                 controllers.NewCharacterController.getAllCharacters
+
+# PERSONALITY TYPE
+GET     /personality/:id            controllers.PersonalityTypeController.getPersonality(id : Integer)
+GET     /addpersonality             controllers.PersonalityTypeController.getAddPersonality
+POST    /addpersonality             controllers.PersonalityTypeController.postAddPersonality
+GET     /personalities                    controllers.PersonalityTypeController.getAllPersonalities
+
+# PLANET
+GET     /planet/:id                 controllers.PlanetController.getPlanet(id : Integer)
+GET     /addplanet                  controllers.PlanetController.getAddPlanet
+POST    /addplanet                  controllers.PlanetController.postAddPlanet
+GET     /planets                    controllers.PlanetController.getAllPlanets
+
+# RACE
+GET     /race/:id                   controllers.RaceController.getRace(id : Integer)
+GET     /addrace                    controllers.RaceController.getAddRace
+POST    /addrace                    controllers.RaceController.postAddRace
+GET     /races                    controllers.RaceController.getAllRaces
+
+# RELIGION
+GET     /religion/:id               controllers.ReligionController.getReligion(id : Integer)
+GET     /addreligion                controllers.ReligionController.getAddReligion
+POST    /addreligion                controllers.ReligionController.postAddReligion
+GET     /religions                    controllers.ReligionController.getAllReligions
+
+#UNIVERSE
+GET     /universe/:id               controllers.UniverseController.getUniverse(id : Integer)
+GET     /adduniverse                controllers.UniverseController.getAddUniverse
+POST    /adduniverse                controllers.UniverseController.postAddUniverse
+GET     /universes                    controllers.UniverseController.getAllUniverses
+
+# WEAPON
+GET     /weapon/:id                 controllers.WeaponController.getWeapon(id : Integer)
+GET     /addweapon                  controllers.WeaponController.getAddWeapon
+POST    /addweapon                  controllers.WeaponController.postAddWeapon
+GET     /weapons                    controllers.WeaponController.getAllWeapons
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

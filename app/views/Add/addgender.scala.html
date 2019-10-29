@@ -1,0 +1,21 @@
+@(genders : List[CharacterGender])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "genderName" placeholder="Gender Name" required>
+
+            <br>
+
+            <input type = "text" name = "genderDescription" placeholder = "Gender Description">
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

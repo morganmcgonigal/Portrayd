@@ -1,0 +1,32 @@
+@(races : List[Race], countries : List[Country])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "raceName" placeholder="Race Name" required>
+
+            <br>
+
+            <select name = "country" required>
+                <option value = "" disabled selected>Country</option>
+                @for(country<-countries){
+                <option value="@country.getCountryId">@country.getCountryName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "file" name = "racePicture" accept="image/*">
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

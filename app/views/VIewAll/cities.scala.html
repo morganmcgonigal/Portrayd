@@ -1,0 +1,14 @@
+@(cities : List[City])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        @for(city<-cities){
+        @city.getCityName
+        <br>
+        }
+    </body>
+</html>

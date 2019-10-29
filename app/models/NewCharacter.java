@@ -14,44 +14,44 @@ public class NewCharacter {
 
     private String characterName;
     private int characterRoleId;
-    private String characterAlias;
+    private String characterAlias;  //null
     private int genderId;
-    private int characterAge;
-    private double characterWeight;
-    private double characterHeightInCM;
+    private int characterAge; //null
+    private double characterWeight; //null
+    private double characterHeightInCM; //null
     private int hairColorId;
-    private String characterHairStyle;
-    private String characterFacialHair;
+    private String characterHairStyle; //null
+    private String characterFacialHair; //null
     private int eyeColorId;
     private int raceId;
-    private String characterSkinTone;
-    private String characterBodyType;
-    private String identifyingMark;
-    private String characterMannerism;
-    private String characterMotivation;
-    private String characterFlaw;
-    private String characterPrejudice;
-    private String characterTalent;
-    private String characterHobby;
+    private String characterSkinTone; //null
+    private String characterBodyType; //null
+    private String identifyingMark; //null
+    private String characterMannerism; //null
+    private String characterMotivation; //null
+    private String characterFlaw; //null
+    private String characterPrejudice; //null
+    private String characterTalent; //null
+    private String characterHobby; //null
     private int personalityTypeId;
-    private String characterCondition;
+    private String characterCondition; //null
     private int religionId;
-    private String characterOccupation;
-    private String characterFavColor;
-    private String characterFavFood;
-    private String characterFavPossession;
-    private String characterFavPosessionDescription;
+    private String characterOccupation; //null
+    private String characterFavColor; //null
+    private String characterFavFood; //null
+    private String characterFavPossession; //null
+    private String characterFavPossessionDescription; //null
     private int weaponId;
-    private String characterFavAnimal;
-    private String characterBirthday;
+    private String characterFavAnimal; //null
+    private String characterBirthday; //null
     private int locationId;
     private int cityId;
     private int countryId;
     private int planetId;
-    private String characterEducation;
-    private String characterBackground;
-    private String characterPicture;
-    private String characterNote;
+    private String characterEducation; //null
+    private String characterBackground; //null
+    private String characterPicture; //null
+    private String characterNote; //null
     private int languageId;
 
     public int getCharacterId() {
@@ -282,16 +282,16 @@ public class NewCharacter {
         return characterFavPossession;
     }
 
-    public void setCharacterFavPossession(String characterFavPossession) {
+    public void setCharacterFavPossession(){
         this.characterFavPossession = characterFavPossession;
     }
 
-    public String getCharacterFavPosessionDescription() {
-        return characterFavPosessionDescription;
+    public String getCharacterFavPossessionDescription() {
+        return characterFavPossessionDescription;
     }
 
-    public void setCharacterFavPosessionDescription(String characterFavPosessionDescription) {
-        this.characterFavPosessionDescription = characterFavPosessionDescription;
+    public void setCharacterFavPossessionDescription(String characterFavPossessionDescription) {
+        this.characterFavPossessionDescription = characterFavPossessionDescription;
     }
 
     public int getWeaponId() {

@@ -1,0 +1,22 @@
+@(weapons : List[Weapon])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Add Weapon</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "weaponName" placeholder="Weapon Name" required>
+
+            <br>
+
+            <input type = "text" name = "weaponDescription" placeholder="Weapon Description">
+
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>

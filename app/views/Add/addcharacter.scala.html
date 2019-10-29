@@ -1,0 +1,249 @@
+@(characters : List[NewCharacter], genders : List[CharacterGender], races : List[Race],
+personalityTypes : List[CharacterPersonalityType], religions : List[Religion],
+eyeColors : List[CharacterEyeColor], hairColors : List[CharacterHairColor],
+roles : List[CharacterRole], weapons : List[Weapon], locations : List[Location],
+cities : List[City], countries : List[Country], planets : List[Planet],
+languages : List[Language])
+@doctype.render
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "characterName" placeholder="Character Name" required>
+
+            <br>
+
+            <input type = "text" name = "characterAlias" placeholder="Character Alias">
+
+            <br>
+
+            <select name = "role" required>
+                <option value = "" disabled selected>Role</option>
+                @for(role<-roles){
+                <option value="@role.getCharacterRoleId">@role.getCharacterRoleName</option>
+                }
+            </select>
+
+            <br>
+
+            <select name = "gender" required>
+                <option value = "" disabled selected>Gender</option>
+                @for(gender<-genders){
+                <option value="@gender.getGenderId">@gender.getGenderName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "number" name = "characterAge" placeholder="0">
+
+            <br>
+
+            <input type = "number" name = "characterWeight" min = "0.00" step = "0.01" placeholder="0">
+
+            <br>
+
+            <input type = "number" name = "characterHeight" placeholder="0"> cm
+
+            <br>
+
+            <select name = "hairColor" required>
+                <option value = "" disabled selected>Hair Color</option>
+                @for(hairColor<-hairColors){
+                <option value="@hairColor.getHairColorId">@hairColor.getHairColorName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "text" name = "hairStyle" placeholder="Character Hair Style">
+
+            <br>
+
+            <input type = "text" name = "facialHair" placeholder="Character Facial Hair">
+
+            <br>
+
+            <select name = "eyeColor" required>
+                <option value = "" disabled selected>Eye Color</option>
+                @for(eyeColor<-eyeColors){
+                <option value="@eyeColor.getEyeColorId">@eyeColor.getEyeColorName</option>
+                }
+            </select>
+
+            <br>
+
+            <select name = "race" required>
+                <option value = "" disabled selected>Race</option>
+                @for(race<-races){
+                <option value="@race.getRaceId">@race.getRaceName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "text" name = "skinTone" placeholder="Character Skin Tone">
+
+            <br>
+
+            <input type = "text" name = "bodyType" placeholder="Character Body Type">
+
+            <br>
+
+            <input type = "text" name = "identifyingMark" placeholder="Character Identifying Mark">
+
+            <br>
+
+            <input type = "text" name = "mannerism" placeholder="Character Mannerism">
+
+            <br>
+
+            <input type = "text" name = "motivation" placeholder="Character Motivation">
+
+            <br>
+
+            <input type = "text" name = "flaw" placeholder="Character Flaw">
+
+            <br>
+
+            <input type = "text" name = "prejudice" placeholder="Character Prejudice">
+
+            <br>
+
+            <input type = "text" name = "talent" placeholder="Character Talent">
+
+            <br>
+
+            <input type = "text" name = "hobby" placeholder="Character Hobby">
+
+            <br>
+
+            <select name = "personalityType" required>
+                <option value = "" disabled selected>Personality Type</option>
+                @for(personalityType<-personalityTypes){
+                <option value="@personalityType.getPersonalityTypeId">@personalityType.getPersonalityTypeName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "text" name = "condition" placeholder="Character Condition">
+
+            <br>
+
+            <select name = "religion" required>
+                <option value = "" disabled selected>Religion</option>
+                @for(religion<-religions){
+                <option value="@religion.getReligionId">@religion.getReligionName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "text" name = "occupation" placeholder="Character Occupation">
+
+            <br>
+
+            <input type = "text" name = "favColor" placeholder="Character Favorite Color">
+
+            <br>
+
+            <input type = "text" name = "favFood" placeholder="Character Favorite Food">
+
+            <br>
+
+            <input type = "text" name = "favPossession" placeholder="Character Favorite Possession">
+
+            <br>
+
+            <input type = "text" name = "favPossessionDescription" placeholder="Character Favorite Possession Description">
+
+            <br>
+
+            <select name = "weapon" required>
+                <option value = "" disabled selected>Weapon</option>
+                @for(weapon<-weapons){
+                <option value="@weapon.getWeaponId">@weapon.getWeaponName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "text" name = "favAnimal" placeholder="Character Favorite Animal Description">
+
+            <br>
+
+            <input type = "text" name = "birthday" placeholder="Character Birthday">
+
+            <br>
+
+            <select name = "location" required>
+                <option value = "" disabled selected>Location</option>
+                @for(location<-locations){
+                <option value="@location.getLocationId">@location.getLocationName</option>
+                }
+            </select>
+
+            <br>
+
+            <select name = "city" required>
+                <option value = "" disabled selected>City</option>
+                @for(city<-cities){
+                <option value="@city.getCityId">@city.getCityName</option>
+                }
+            </select>
+
+            <br>
+
+            <select name = "country" required>
+                <option value = "" disabled selected>Country</option>
+                @for(country<-countries){
+                <option value="@country.getCountryId">@country.getCountryName</option>
+                }
+            </select>
+
+            <br>
+
+            <select name = "planet" required>
+                <option value = "" disabled selected>Planet</option>
+                @for(planet<-planets){
+                <option value="@planet.getPlanetId">@planet.getPlanetName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "text" name = "education" placeholder="Character Education">
+
+            <br>
+
+            <input type = "text" name = "background" placeholder="Character Background">
+
+            <br>
+
+            <input type = "file" name = "characterPicture" accept="image/*">
+
+            <br>
+
+            <input type = "text" name = "note" placeholder="Notes">
+
+            <br>
+
+            <select name = "language" required>
+                <option value = "" disabled selected>Language</option>
+                @for(language<-languages){
+                <option value="@language.getLanguageId">@language.getLanguageName</option>
+                }
+            </select>
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
+    </body>
+</html>
