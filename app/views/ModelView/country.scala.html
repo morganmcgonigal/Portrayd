@@ -1,11 +1,20 @@
-@(country : Country)
+@(country : Country, planet : Planet, language : Language)
 @doctype.render
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
         <title>Title</title>
+        @bootstrap.render
     </head>
     <body>
+        @if(country.getCountryPicture!=null){
+        @country.getCountryPicture
+        }
+        <br>
         @country.getCountryName
+        <br>
+        @planet.getPlanetName
+        <br>
+        @language.getLanguageName
     </body>
 </html>

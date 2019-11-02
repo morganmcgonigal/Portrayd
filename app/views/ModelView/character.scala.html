@@ -1,11 +1,192 @@
-@(character : NewCharacter)
+@(character : NewCharacter, role : CharacterRole, gender : CharacterGender, hairColor : CharacterHairColor, eyeColor : CharacterEyeColor, race : Race,
+personalityType : CharacterPersonalityType, religion : Religion, weapon : Weapon, location : Location, city : City,
+country : Country, planet : Planet, language : Language)
 @doctype.render
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
-        <title>Character</title>
+        <title>@character.getCharacterName</title>
+        @bootstrap.render
     </head>
     <body>
-        @character.getCharacterName
+        Name:  @character.getCharacterName
+        <br>
+        Role:  @role.getCharacterRoleName
+        <br>
+        @if(character.getCharacterAlias==null){
+        Alias : N/A
+        } else {
+        Alias:  @character.getCharacterAlias
+        }
+        <br>
+        Gender:  @gender.getGenderName
+        <br>
+        @if(character.getCharacterAge==null){
+        Age : N/A
+        } else {
+        Age:  @character.getCharacterAge
+        }
+        <br>
+        @if(character.getCharacterWeight==null){
+        Weight:  N/A
+        } else {
+        Weight:  @character.getCharacterWeight
+        }
+        <br>
+        @if(character.getCharacterHeightInCM==null){
+        Height : N/A
+        } else {
+        Height:  @character.getCharacterHeightInCM CM
+        }
+        <br>
+        Hair Color:  @hairColor.getHairColorName
+        <br>
+        @if(character.getCharacterHairStyle==null){
+        Hair Style : N/A
+        } else {
+        Hair Style:  @character.getCharacterHairStyle
+        }
+        <br>
+        Facial Hair:  @character.getCharacterFacialHair
+        <br>
+        Eye Color:  @eyeColor.getEyeColorName
+        <br>
+        Race:  @race.getRaceName
+        <br>
+        @if(character.getCharacterSkinTone==null){
+        Skin Tone : N/A
+        } else {
+        Skin Tone:  @character.getCharacterSkinTone
+        }
+        <br>
+        @if(character.getCharacterBodyType!=null){
+        Body Type:  @character.getCharacterBodyType
+        } else {
+        Body Type : N/A
+        }
+        <br>
+        @if(character.getIdentifyingMark==null){
+        Identifying Mark : N/A
+        } else {
+        Identifying Mark:  @character.getIdentifyingMark
+        }
+        <br>
+        @if(character.getCharacterMannerism==null){
+        Mannerism : N/A
+        } else {
+        @character.getCharacterName's Mannerism:  @character.getCharacterMannerism
+        }
+        <br>
+        @if(character.getCharacterMotivation==null){
+        Motivation : N/A
+        } else {
+        Motivation:  @character.getCharacterMotivation
+        }
+        <br>
+        @if(character.getCharacterFlaw==null){
+        Flaw : N/A
+        } else {
+        Flaw:  @character.getCharacterFlaw
+        }
+        <br>
+        @if(character.getCharacterPrejudice==null){
+        Prejudice:  N/A
+        } else {
+        Prejudice:  @character.getCharacterPrejudice
+        }
+        <br>
+        @if(character.getCharacterTalent==null){
+        Talent : N/A
+        } else {
+        Talent:  @character.getCharacterTalent
+        }
+        <br>
+        @if(character.getCharacterHobby==null){
+        Hobby : N/A
+        } else {
+        Hobby:  @character.getCharacterHobby
+        }
+        <br>
+        Personality Type:  @personalityType.getPersonalityTypeName
+        <br>
+        @if(character.getCharacterCondition==null){
+        Condition : N/A
+        } else {
+        Condition:  @character.getCharacterCondition
+        }
+        <br>
+        Religion:  @religion.getReligionName
+        <br>
+        @if(character.getCharacterOccupation==null){
+        Occupation : N/A
+        } else {
+        Occupation:  @character.getCharacterOccupation
+        }
+        <br>
+        @if(character.getCharacterFavColor==null){
+        Favorite Color : N/A
+        } else {
+        Favorite Color:  @character.getCharacterFavColor
+        }
+        <br>
+        @if(character.getCharacterFavPossession==null){
+        Favorite Possession : N/A
+        } else {
+        Favorite Possession:  @character.getCharacterFavPossession
+        }
+        <br>
+        @if(character.getCharacterFavPossessionDescription==null){
+        Description : N/A
+        } else {
+        Description:  @character.getCharacterFavPossessionDescription
+        }
+        <br>
+        Weapon:  @weapon.getWeaponName
+        <br>
+        @if(character.getCharacterFavAnimal==null){
+        Favorite Animal : N/A
+        } else {
+        Favorite Animal:  @character.getCharacterFavAnimal
+        }
+        <br>
+        @if(character.getCharacterBirthday==null){
+        Birthday : N/A
+        } else {
+        Birthday:  @character.getCharacterBirthday
+        }
+        <br>
+        Location:  @location.getLocationName
+        <br>
+        City:  @city.getCityName
+        <br>
+        Country:  @country.getCountryName
+        <br>
+        Planet:  @planet.getPlanetName
+        <br>
+        @if(character.getCharacterEducation==null){
+        Education : N/A
+        } else {
+        Education:  @character.getCharacterEducation
+        }
+        <br>
+        @if(character.getCharacterBackground==null){
+        Background : N/A
+        } else {
+        Background:  @character.getCharacterBackground
+        }
+        <br>
+        @if(character.getCharacterPicture==null){
+        Picture : N/A
+        } else {
+        Picture:  @character.getCharacterPicture
+        }
+        <br>
+        @if(character.getCharacterNote==null){
+        Notes : N/A
+        } else {
+        Notes:  @character.getCharacterNote
+        }
+        <br>
+        Language:  @language.getLanguageName
     </body>
 </html>

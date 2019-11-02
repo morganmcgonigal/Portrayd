@@ -83,4 +83,38 @@ public class EyeColorController extends Controller {
 
         return ok(views.html.VIewAll.eyecolors.render(eyeColors));
     }
+
+    @Transactional(readOnly = true)
+    public Result getEyeColorEdit(int eyeColorId){
+        TypedQuery<CharacterEyeColor> eyeColorTypedQuery = db.em().createQuery(
+                "SELECT ec " +
+                        "FROM CharacterEyeColor ec " +
+                        "WHERE eyeColorId = :eyeColorId",
+                CharacterEyeColor.class);
+        eyeColorTypedQuery.setParameter("eyeColorId", eyeColorId);
+        CharacterEyeColor eyeColor = eyeColorTypedQuery.getSingleResult();
+
+        return ok(views.html.Edit.editeyecolor.render(eyeColor));
+    }
+
+    @Transactional
+    public Result postEyeColorEdit(int eyeColorId){
+        TypedQuery<CharacterEyeColor> eyeColorTypedQuery = db.em().createQuery(
+                "SELECT ec " +
+                        "FROM CharacterEyeColor ec " +
+                        "WHERE eyeColorId = :eyeColorId",
+                CharacterEyeColor.class);
+        eyeColorTypedQuery.setParameter("eyeColorId", eyeColorId);
+        CharacterEyeColor eyeColor = eyeColorTypedQuery.getSingleResult();
+
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String eyeColorName = form.get("eyeColorName");
+        String eyeColorDescription = form.get("description");
+
+        eyeColor.setEyeColorName(eyeColorName);
+        eyeColor.setEyeColorDescription(eyeColorDescription);
+        db.em().persist(eyeColor);
+
+        return ok(views.html.ModelView.eyecolor.render(eyeColor));
+    }
 }

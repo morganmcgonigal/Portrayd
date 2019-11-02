@@ -84,4 +84,40 @@ public class LanguageController extends Controller {
 
         return ok(views.html.VIewAll.languages.render(languages));
     }
+
+    @Transactional (readOnly = true)
+    public Result getLanguageEdit(int languageId){
+        TypedQuery<Language> languageTypedQuery = db.em().createQuery(
+                "SELECT l " +
+                        "FROM Language l " +
+                        "WHERE languageId = :languageId",
+                Language.class);
+        languageTypedQuery.setParameter("languageId", languageId);
+        Language language = languageTypedQuery.getSingleResult();
+
+        return ok(views.html.Edit.editlanguage.render(language));
+    }
+
+    @Transactional
+    public Result postLanguageEdit(int languageId){
+        TypedQuery<Language> languageTypedQuery = db.em().createQuery(
+                "SELECT l " +
+                        "FROM Language l " +
+                        "WHERE languageId = :languageId",
+                Language.class);
+        languageTypedQuery.setParameter("languageId", languageId);
+        Language language = languageTypedQuery.getSingleResult();
+
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String languageName = form.get("languageName");
+        String languageDescription = form.get("description");
+        String languagePicture = form.get("picture");
+
+        language.setLanguageName(languageName);
+        language.setLanguageDescription(languageDescription);
+        language.setLanguagePicture(languagePicture);
+        db.em().persist(language);
+
+        return ok(views.html.ModelView.language.render(language));
+    }
 }

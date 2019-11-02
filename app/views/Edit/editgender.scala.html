@@ -1,10 +1,23 @@
-<!DOCTYPE html>
+@(gender : CharacterGender)
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
         <title>Title</title>
+        @bootstrap.render
     </head>
     <body>
-        
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "genderName" placeholder="Gender Name" value = "@gender.getGenderName" required>
+
+            <br>
+
+            <input type = "text" name = "genderDescription" placeholder="Description" value = "@gender.getGenderDescription">
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
     </body>
 </html>

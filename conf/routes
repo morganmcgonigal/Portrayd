@@ -5,57 +5,69 @@
 # An example controller showing a sample home page
 GET     /                           controllers.MainController.getIndex
 
-# CHARACTER ROLE
-GET     /characterrole/:id         controllers.CharacterRoleController.getRole(id : Integer)
-GET     /addrole                    controllers.CharacterRoleController.getAddRole
-POST    /addrole                   controllers.CharacterRoleController.postAddRole
-GET    /characterroles             controllers.CharacterRoleController.getAllRoles
-GET     /editrole/:id               controllers.CharacterRoleController.getRoleEdit(id : Integer)
-POST    /editrole/:id               controllers.CharacterRoleController.postRoleEdit(id : Integer)
+# CHARACTER ROLE - ALL FUNCTION
+GET    /characterrole/:id           controllers.CharacterRoleController.getRole(id : Integer)
+GET    /addrole                     controllers.CharacterRoleController.getAddRole
+POST   /addrole                     controllers.CharacterRoleController.postAddRole
+GET    /characterroles              controllers.CharacterRoleController.getAllRoles
+GET    /editrole/:id                controllers.CharacterRoleController.getRoleEdit(id : Integer)
+POST   /editrole/:id                controllers.CharacterRoleController.postRoleEdit(id : Integer)
 
-# CITY
+# CITY - ALL FUNCTION
 GET     /city/:id                   controllers.CityController.getCity(id : Integer)
 GET     /addcity                    controllers.CityController.getAddCity
 POST    /addcity                    controllers.CityController.postAddCity
-GET     /cities                    controllers.CityController.getAllCities
+GET     /cities                     controllers.CityController.getAllCities
 GET     /editcity/:id               controllers.CityController.getCityEdit(id : Integer)
 POST    /editcity/:id               controllers.CityController.postCityEdit(id : Integer)
 
-# COUNTRY
+# COUNTRY - ALL FUNCTION
 GET     /country/:id                controllers.CountryController.getCountry(id : Integer)
 GET     /addcountry                 controllers.CountryController.getAddCountry
 POST    /addcountry                 controllers.CountryController.postAddCountry
-GET     /countries                    controllers.CountryController.getAllCountries
+GET     /countries                  controllers.CountryController.getAllCountries
+GET     /editcountry/:id            controllers.CountryController.getCountryEdit(id : Integer)
+POST    /editcountry/:id            controllers.CountryController.postCountryEdit(id : Integer)
 
-# EYE COLOR
+# EYE COLOR - ALL FUNCTION
 GET     /eyecolor/:id               controllers.EyeColorController.getEyeColor(id : Integer)
 GET     /addeyecolor                controllers.EyeColorController.getAddEyeColor
 POST    /addeyecolor                controllers.EyeColorController.postAddEyeColor
-GET     /eyecolors                    controllers.EyeColorController.getAllEyeColors
+GET     /eyecolors                  controllers.EyeColorController.getAllEyeColors
+GET     /editeyecolor/:id           controllers.EyeColorController.getEyeColorEdit(id : Integer)
+POST    /editeyecolor/:id           controllers.EyeColorController.postEyeColorEdit(id : Integer)
 
-# GENDER
+# GENDER - ALL FUNCTION
 GET     /gender/:id                 controllers.GenderController.getGender(id : Integer)
 GET     /addgender                  controllers.GenderController.getAddGender
 POST    /addgender                  controllers.GenderController.postAddGender
 GET     /genders                    controllers.GenderController.getAllGenders
+GET     /editgender/:id             controllers.GenderController.getGenderEdit(id : Integer)
+POST    /editgender/:id             controllers.GenderController.postGenderEdit(id : Integer)
 
 # HAIR COLOR
 GET     /haircolor/:id              controllers.HairColorController.getHairColor(id : Integer)
 GET     /addhaircolor               controllers.HairColorController.getAddHairColor
 POST    /addhaircolor               controllers.HairColorController.postAddHairColor
-GET     /haircolors                    controllers.HairColorController.getAllHairColors
+GET     /haircolors                 controllers.HairColorController.getAllHairColors
+GET     /edithair/:id               controllers.HairColorController.getHairColorEdit(id : Integer)
+POST    /edithair/:id               controllers.HairColorController.postHairColorEdit(id : Integer)
 
-# LANDMARK
+# LANDMARK - ALL FUNCTION
 GET     /landmark/:id               controllers.LandmarkController.getLandmark(id : Integer)
 GET     /addlandmark                controllers.LandmarkController.getAddLandmark
 POST    /addlandmark                controllers.LandmarkController.postAddLandmark
-GET     /landmarks                    controllers.LandmarkController.getAllLandmarks
+GET     /landmarks                  controllers.LandmarkController.getAllLandmarks
+GET     /editlandmark/:id           controllers.LandmarkController.getLandmarkEdit(id : Integer)
+POST    /editlandmark/:id           controllers.LandmarkController.postLandmarkEdit(id : Integer)
 
 # LANGUAGE
 GET     /language/:id               controllers.LanguageController.getLanguage(id : Integer)
 GET     /addlanguage                controllers.LanguageController.getAddLanguage
 POST    /addlanguage                controllers.LanguageController.postAddLanguage
-GET     /languages                    controllers.LanguageController.getAllLanguages
+GET     /languages                  controllers.LanguageController.getAllLanguages
+GET     /editlanguage/:id          controllers.LanguageController.getLanguageEdit(id : Integer)
+POST    /editlanguage/:id          controllers.LanguageController.postLanguageEdit(id : Integer)
 
 # LOCATION
 GET     /location/:id               controllers.LocationController.getLocation(id : Integer)
@@ -74,6 +86,8 @@ GET     /character/:id              controllers.NewCharacterController.getCharac
 GET     /addcharacter               controllers.NewCharacterController.getAddCharacter
 POST    /addcharacter               controllers.NewCharacterController.postAddCharacter
 GET     /characters                 controllers.NewCharacterController.getAllCharacters
+#GET     /editcharacter/:id          controllers.NewCharacterController.getCharacterEdit(id : Integer)
+#POST    /editcharacter/:id          controllers.NewCharacterController.postCharacterEdit(id : Integer)
 
 # PERSONALITY TYPE
 GET     /personality/:id            controllers.PersonalityTypeController.getPersonality(id : Integer)

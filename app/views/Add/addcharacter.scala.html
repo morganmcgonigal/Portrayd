@@ -9,6 +9,7 @@ languages : List[Language])
     <head>
         <meta charset = "UTF-8">
         <title>Title</title>
+        @bootstrap.render
     </head>
     <body>
         <form method = "POST">
@@ -165,7 +166,7 @@ languages : List[Language])
 
             <br>
 
-            <select name = "weapon" required>
+            <select name = "weapon">
                 <option value = "" disabled selected>Weapon</option>
                 @for(weapon<-weapons){
                 <option value="@weapon.getWeaponId">@weapon.getWeaponName</option>

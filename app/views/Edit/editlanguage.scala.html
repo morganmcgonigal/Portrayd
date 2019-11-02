@@ -1,10 +1,31 @@
-<!DOCTYPE html>
+@(language : Language)
+@doctype.render
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
         <title>Title</title>
+        @bootstrap.render
     </head>
     <body>
-        
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "languageName" placeholder="Language Name" value = "@language.getLanguageName" required>
+
+            <br>
+
+            <input type = "text" name = "description" placeholder="Language Description" value = "@language.getLanguageDescription">
+
+            <br>
+
+            @if(language.getLanguagePicture!=null){
+            <img src = "@language.getLanguagePicture" width = "250px">
+            }
+            <input type = "file" name = "picture" accept="image/*">
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
     </body>
 </html>

@@ -4,8 +4,15 @@
     <head>
         <meta charset = "UTF-8">
         <title>Language</title>
+        @bootstrap.render
     </head>
     <body>
         @language.getLanguageName
+        <br>
+        @language.getLanguageDescription
+        <br>
+        @if(language.getLanguagePicture!=null){
+        @language.getLanguagePicture
+        }
     </body>
 </html>

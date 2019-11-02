@@ -34,7 +34,15 @@ public class LandmarkController extends Controller {
         landmarkTypedQuery.setParameter("landmarkId", landmarkId);
         Landmark landmark = landmarkTypedQuery.getSingleResult();
 
-        return ok(views.html.ModelView.landmark.render(landmark));
+        TypedQuery<Country> countryTypedQuery = db.em().createQuery(
+                "SELECT c " +
+                        "FROM Country c " +
+                        "WHERE countryId = :countryId",
+                Country.class);
+        countryTypedQuery.setParameter("countryId", landmark.getCountryId());
+        Country country = countryTypedQuery.getSingleResult();
+
+        return ok(views.html.ModelView.landmark.render(landmark, country));
     }
 
     @Transactional(readOnly = true)
@@ -91,5 +99,57 @@ public class LandmarkController extends Controller {
         List<Landmark> landmarks = landmarkTypedQuery.getResultList();
 
         return ok(views.html.VIewAll.landmarks.render(landmarks));
+    }
+
+    @Transactional(readOnly = true)
+    public Result getLandmarkEdit(int landmarkId){
+        TypedQuery<Landmark> landmarkTypedQuery = db.em().createQuery(
+                "SELECT l " +
+                        "FROM Landmark l " +
+                        "WHERE landmarkId = :landmarkId",
+                Landmark.class);
+        landmarkTypedQuery.setParameter("landmarkId", landmarkId);
+        Landmark landmark = landmarkTypedQuery.getSingleResult();
+
+        TypedQuery<Country> countryTypedQuery = db.em().createQuery(
+                "SELECT c " +
+                        "FROM Country c " +
+                        "ORDER BY countryId",
+                Country.class);
+        List<Country> countries = countryTypedQuery.getResultList();
+
+        return ok(views.html.Edit.editlandmark.render(landmark, countries));
+    }
+
+    @Transactional
+    public Result postLandmarkEdit(int landmarkId){
+        TypedQuery<Landmark> landmarkTypedQuery = db.em().createQuery(
+                "SELECT l " +
+                        "FROM Landmark l " +
+                        "WHERE landmarkId = :landmarkId",
+                Landmark.class);
+        landmarkTypedQuery.setParameter("landmarkId", landmarkId);
+        Landmark landmark = landmarkTypedQuery.getSingleResult();
+
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String landmarkName = form.get("landmarkName");
+        String countryName = form.get("countryName");
+        int countryId = Integer.parseInt(countryName);
+        String landmarkPicture = form.get("picture");
+
+        landmark.setLandmarkName(landmarkName);
+        landmark.setCountryId(countryId);
+        landmark.setLandmarkPicture(landmarkPicture);
+        db.em().persist(landmark);
+
+        TypedQuery<Country> countryTypedQuery = db.em().createQuery(
+                "SELECT c " +
+                        "FROM Country c " +
+                        "WHERE countryId = :countryId",
+                Country.class);
+        countryTypedQuery.setParameter("countryId", landmark.getCountryId());
+        Country country = countryTypedQuery.getSingleResult();
+
+        return ok(views.html.ModelView.landmark.render(landmark, country));
     }
 }

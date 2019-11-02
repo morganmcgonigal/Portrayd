@@ -1,10 +1,23 @@
-<!DOCTYPE html>
+@(hairColor : CharacterHairColor)
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
         <title>Title</title>
+        @bootstrap.render
     </head>
     <body>
-        
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "hairColorName" placeholder="Hair Color Name" value = "@hairColor.getHairColorName" required>
+
+            <br>
+
+            <input type = "text" name = "hairColorDescription" placeholder="Description" value = "@hairColor.getHairColorDescription">
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
     </body>
 </html>

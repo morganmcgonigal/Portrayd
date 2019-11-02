@@ -1,11 +1,27 @@
-@(city : City)
+@(city : City, country : Country)
 @doctype.render
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
         <title>Title</title>
+        @bootstrap.render
     </head>
     <body>
+        <!--private String cityName;-->
+        <!--private int countryId;-->
+        <!--private boolean isCapitalCity;-->
+        <!--private String cityPicture;-->
+
         @city.getCityName
+        <br>
+        @country.getCountryName
+        <br>
+        @if(city.isCapitalCity==true){
+        <input type = "checkbox" name = "isCapitalCity" value = "true" checked>Capital City
+        } else{
+        <input type = "checkbox" name = "isCapitalCity" value = "true">Capital city
+        }
+        <br>
+        @city.getCityPicture
     </body>
 </html>

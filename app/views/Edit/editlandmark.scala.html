@@ -1,10 +1,43 @@
-<!DOCTYPE html>
+@(landmark : Landmark, countries : List[Country])
+@doctype.render
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
         <title>Edit Landmark</title>
+        @bootstrap.render
     </head>
     <body>
-        
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "landmarkName" placeholder="Landmark Name" value = "@landmark.getLandmarkName" required>
+
+            <br>
+
+            <select name = "countryName" required>
+                @for(country<-countries){
+                @if(country.getCountryId==landmark.getCountryId){
+                <option value = "@country.getCountryId" selected>
+                    @country.getCountryName
+                </option>
+                } else{
+                <option value = "@country.getCountryId">
+                    @country.getCountryName
+                </option>
+                }
+                }
+            </select>
+
+            <br>
+
+            @if(landmark.getLandmarkPicture!=null){
+            <img src = "@landmark.getLandmarkPicture" width = "250px">
+            }
+            <input type = "file" name = "picture" accept="image/*">
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
     </body>
 </html>

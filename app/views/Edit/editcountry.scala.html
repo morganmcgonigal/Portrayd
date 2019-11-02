@@ -1,10 +1,59 @@
-<!DOCTYPE html>
+@(country : Country, planets : List[Planet], languages : List[Language])
+@doctype.render
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
         <title>Title</title>
+        @bootstrap.render
     </head>
     <body>
-        
+        <form method = "POST">
+            @helper.CSRF.formField
+
+            <input type = "text" name = "countryName" placeholder="Country Name" value = "@country.getCountryName" required>
+
+            <br>
+
+            <select name = "planet" required>
+                @for(planet<-planets){
+                @if(planet.getPlanetId==country.getPlanetId){
+                <option value = "@planet.getPlanetId" selected>
+                    @planet.getPlanetName
+                </option>
+                } else{
+                <option value = "@planet.getPlanetId">
+                    @planet.getPlanetName
+                </option>
+                }
+                }
+            </select>
+
+            <br>
+
+            <select name = "language" required>
+                @for(language<-languages){
+                @if(language.getLanguageId==country.getLanguageId){
+                <option value = "@language.getLanguageId" selected>
+                    @language.getLanguageName
+                </option>
+                } else{
+                <option value = "@language.getLanguageId">
+                    @language.getLanguageName
+                </option>
+                }
+                }
+            </select>
+
+            <br>
+
+            @if(country.getCountryPicture!=null){
+            <img src = "@country.getCountryPicture" width = "250px">
+            }
+            <input type = "file" name = "picture" accept="image/*">
+
+            <br>
+
+            <input type = "submit" value = "Save">
+        </form>
     </body>
 </html>

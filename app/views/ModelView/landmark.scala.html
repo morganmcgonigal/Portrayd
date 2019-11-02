@@ -1,11 +1,18 @@
-@(landmark : Landmark)
+@(landmark : Landmark, country : Country)
 @doctype.render
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
         <title>Landmark</title>
+        @bootstrap.render
     </head>
     <body>
         @landmark.getLandmarkName
+        <br>
+        @country.getCountryName
+        <br>
+        @if(landmark.getLandmarkPicture!=null){
+        @landmark.getLandmarkPicture
+        }
     </body>
 </html>

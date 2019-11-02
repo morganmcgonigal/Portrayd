@@ -35,7 +35,15 @@ public class CityController extends Controller {
         cityTypedQuery.setParameter("cityId", cityId);
         City city = cityTypedQuery.getSingleResult();
 
-        return ok(views.html.ModelView.city.render(city));
+        TypedQuery<Country> countryTypedQuery = db.em().createQuery(
+                "SELECT c " +
+                        "FROM Country c " +
+                        "WHERE countryId = :countryId",
+                Country.class);
+        countryTypedQuery.setParameter("countryId", city.getCountryId());
+        Country country = countryTypedQuery.getSingleResult();
+
+        return ok(views.html.ModelView.city.render(city, country));
     }
 
     @Transactional(readOnly = true)
@@ -59,11 +67,6 @@ public class CityController extends Controller {
 
         return ok(views.html.Edit.editcity.render(city, countries));
     }
-
-//    private String cityName;
-//    private int countryId;
-//    private boolean isCapitalCity;
-//    private String cityPicture;
 
     @Transactional
     public Result postCityEdit(int cityId){
@@ -89,9 +92,15 @@ public class CityController extends Controller {
         city.setCityPicture(cityPicture);
         db.em().persist(city);
 
-        List<City> cities = cityTypedQuery.getResultList();
+        TypedQuery<Country> countryTypedQuery = db.em().createQuery(
+                "SELECT c " +
+                        "FROM Country c " +
+                        "WHERE countryId = :countryId",
+                Country.class);
+        countryTypedQuery.setParameter("countryId", city.getCountryId());
+        Country country = countryTypedQuery.getSingleResult();
 
-        return ok(views.html.VIewAll.cities.render(cities));
+        return ok(views.html.ModelView.city.render(city, country));
     }
 
     @Transactional(readOnly = true)

@@ -82,4 +82,38 @@ public class GenderController extends Controller {
 
         return ok(views.html.VIewAll.genders.render(genders));
     }
+
+    @Transactional(readOnly = true)
+    public Result getGenderEdit(int genderId){
+        TypedQuery<CharacterGender> genderTypedQuery = db.em().createQuery(
+                "SELECT cg " +
+                        "FROM CharacterGender cg " +
+                        "WHERE genderId = :genderId",
+                CharacterGender.class);
+        genderTypedQuery.setParameter("genderId", genderId);
+        CharacterGender gender = genderTypedQuery.getSingleResult();
+
+        return ok(views.html.Edit.editgender.render(gender));
+    }
+
+    @Transactional
+    public Result postGenderEdit(int genderId){
+        TypedQuery<CharacterGender> genderTypedQuery = db.em().createQuery(
+                "SELECT cg " +
+                        "FROM CharacterGender cg " +
+                        "WHERE genderId = :genderId",
+                CharacterGender.class);
+        genderTypedQuery.setParameter("genderId", genderId);
+        CharacterGender gender = genderTypedQuery.getSingleResult();
+
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String genderName = form.get("genderName");
+        String genderDescription = form.get("genderDescription");
+
+        gender.setGenderName(genderName);
+        gender.setGenderDescription(genderDescription);
+        db.em().persist(gender);
+
+        return ok(views.html.ModelView.gender.render(gender));
+    }
 }

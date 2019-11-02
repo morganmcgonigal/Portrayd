@@ -58,24 +58,17 @@ public class CharacterRoleController extends Controller {
                         "WHERE characterRoleId = :characterRoleId",
                 CharacterRole.class);
         roleTypedQuery.setParameter("characterRoleId", characterRoleId);
-        CharacterRole role = roleTypedQuery.getSingleResult();
+        CharacterRole characterRole = roleTypedQuery.getSingleResult();
 
         DynamicForm form = formFactory.form().bindFromRequest();
         String characterRoleName = form.get("roleName");
         String characterRoleDescription = form.get("roleDescription");
 
-        role.setCharacterRoleName(characterRoleName);
-        role.setCharacterRoleDescription(characterRoleDescription);
-        db.em().persist(role);
+        characterRole.setCharacterRoleName(characterRoleName);
+        characterRole.setCharacterRoleDescription(characterRoleDescription);
+        db.em().persist(characterRole);
 
-        TypedQuery<CharacterRole> rolesTypedQuery = db.em().createQuery(
-                "SELECT cr " +
-                        "FROM CharacterRole cr " +
-                        "ORDER BY characterRoleId",
-                CharacterRole.class);
-        List<CharacterRole> roles = rolesTypedQuery.getResultList();
-
-        return ok(views.html.VIewAll.characterroles.render(roles));
+        return ok(views.html.ModelView.characterrole.render(characterRole));
     }
 
     @Transactional (readOnly = true)

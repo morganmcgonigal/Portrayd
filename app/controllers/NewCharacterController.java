@@ -34,7 +34,112 @@ public class NewCharacterController extends Controller {
         newCharacterTypedQuery.setParameter("characterId", characterId);
         NewCharacter character = newCharacterTypedQuery.getSingleResult();
 
-        return ok(views.html.ModelView.character.render(character));
+        TypedQuery<CharacterRole> characterRoleTypedQuery = db.em().createQuery(
+                "SELECT cr " +
+                        "FROM CharacterRole cr " +
+                        "WHERE characterRoleId = :characterRoleId",
+                CharacterRole.class);
+        characterRoleTypedQuery.setParameter("characterRoleId", character.getCharacterRoleId());
+        CharacterRole role = characterRoleTypedQuery.getSingleResult();
+
+        TypedQuery<CharacterGender> characterGenderTypedQuery = db.em().createQuery(
+                "SELECT cg " +
+                        "FROM CharacterGender cg " +
+                        "WHERE genderId = :genderId",
+                CharacterGender.class);
+        characterGenderTypedQuery.setParameter("genderId", character.getGenderId());
+        CharacterGender gender = characterGenderTypedQuery.getSingleResult();
+
+        TypedQuery<CharacterHairColor> characterHairColorTypedQuery = db.em().createQuery(
+                "SELECT hc " +
+                        "FROM CharacterHairColor hc " +
+                        "WHERE hairColorId = :hairColorId",
+                CharacterHairColor.class);
+        characterHairColorTypedQuery.setParameter("hairColorId", character.getHairColorId());
+        CharacterHairColor hairColor = characterHairColorTypedQuery.getSingleResult();
+
+        TypedQuery<CharacterEyeColor> characterEyeColorTypedQuery = db.em().createQuery(
+                "SELECT ec " +
+                        "FROM CharacterEyeColor ec " +
+                        "WHERE eyeColorId = :eyeColorId",
+                CharacterEyeColor.class);
+        characterEyeColorTypedQuery.setParameter("eyeColorId", character.getEyeColorId());
+        CharacterEyeColor eyeColor = characterEyeColorTypedQuery.getSingleResult();
+
+        TypedQuery<Race> raceTypedQuery = db.em().createQuery(
+                "SELECT r " +
+                        "FROM Race r " +
+                        "WHERE raceId = :raceId",
+        Race.class);
+        raceTypedQuery.setParameter("raceId", character.getRaceId());
+        Race race = raceTypedQuery.getSingleResult();
+
+        TypedQuery<CharacterPersonalityType> personalityTypeTypedQuery = db.em().createQuery(
+                "SELECT pt " +
+                        "FROM CharacterPersonalityType pt " +
+                        "WHERE personalityTypeId = :personalityTypeId",
+                CharacterPersonalityType.class);
+        personalityTypeTypedQuery.setParameter("personalityTypeId", character.getPersonalityTypeId());
+        CharacterPersonalityType personalityType = personalityTypeTypedQuery.getSingleResult();
+
+        TypedQuery<Religion> religionTypedQuery = db.em().createQuery(
+                "SELECT r " +
+                        "FROM Religion r " +
+                        "WHERE religionId = :religionId",
+                Religion.class);
+        religionTypedQuery.setParameter("religionId", character.getReligionId());
+        Religion religion = religionTypedQuery.getSingleResult();
+
+        TypedQuery<Weapon> weaponTypedQuery = db.em().createQuery(
+                "SELECT w " +
+                        "FROM Weapon w " +
+                        "WHERE weaponId = :weaponId",
+                Weapon.class);
+        weaponTypedQuery.setParameter("weaponId", character.getWeaponId());
+        Weapon weapon = weaponTypedQuery.getSingleResult();
+
+        TypedQuery<Location> locationTypedQuery = db.em().createQuery(
+                "SELECT l " +
+                        "FROM Location l " +
+                        "WHERE locationId = :locationId",
+                Location.class);
+        locationTypedQuery.setParameter("locationId", character.getLocationId());
+        Location location = locationTypedQuery.getSingleResult();
+
+        TypedQuery<City> cityTypedQuery = db.em().createQuery(
+                "SELECT c " +
+                        "FROM City c " +
+                        "WHERE cityId = :cityId",
+                City.class);
+        cityTypedQuery.setParameter("cityId", character.getCityId());
+        City city = cityTypedQuery.getSingleResult();
+
+        TypedQuery<Country> countryTypedQuery = db.em().createQuery(
+                "SELECT c " +
+                        "FROM Country c " +
+                        "WHERE countryId = :countryId",
+                Country.class);
+        countryTypedQuery.setParameter("countryId", character.getCountryId());
+        Country country = countryTypedQuery.getSingleResult();
+
+        TypedQuery<Planet> planetTypedQuery = db.em().createQuery(
+                "SELECT p " +
+                        "FROM Planet p " +
+                        "WHERE planetId = :planetId",
+                Planet.class);
+        planetTypedQuery.setParameter("planetId", character.getPlanetId());
+        Planet planet = planetTypedQuery.getSingleResult();
+
+        TypedQuery<Language> languageTypedQuery = db.em().createQuery(
+                "SELECT l " +
+                        "FROM Language l " +
+                        "WHERE languageId = :languageId",
+                Language.class);
+        languageTypedQuery.setParameter("languageId", character.getLanguageId());
+        Language language = languageTypedQuery.getSingleResult();
+
+        return ok(views.html.ModelView.character.render(character, role, gender, hairColor, eyeColor, race, personalityType,
+                religion, weapon, location, city, country, planet, language));
     }
 
     @Transactional(readOnly = true)
@@ -48,44 +153,6 @@ public class NewCharacterController extends Controller {
 
         return ok(views.html.VIewAll.characters.render(characters));
     }
-
-    //    @Transactional (readOnly = true)
-//    public Result getAddRole(){
-//        TypedQuery<CharacterRole> roleTypedQuery = db.em().createQuery(
-//                "SELECT cr " +
-//                        "FROM CharacterRole cr " +
-//                        "ORDER BY characterRoleId",
-//                CharacterRole.class);
-//        List<CharacterRole> characterRoles = roleTypedQuery.getResultList();
-//
-//        return ok(views.html.Add.addrole.render(characterRoles));
-//    }
-
-//    @Transactional
-//    public Result postAddRace(){
-//        Race race = new Race();
-//
-//        DynamicForm form = formFactory.form().bindFromRequest();
-//        String raceName = form.get("raceName");
-//        String countryName = form.get("country");
-//        int countryId = Integer.parseInt(countryName);
-//        String racePicture = form.get("racePicture");
-//
-//        race.setRaceName(raceName);
-//        race.setCountryId(countryId);
-//        race.setRacePicture(racePicture);
-//        db.em().persist(race);
-//
-//        TypedQuery<Race> raceTypedQuery = db.em().createQuery(
-//                "SELECT r " +
-//                        "FROM Race r " +
-//                        "ORDER BY raceId",
-//                Race.class);
-//        List<Race> races = raceTypedQuery.getResultList();
-//
-//        return ok(views.html.VIewAll.races.render(races));
-//    }
-
 
     @Transactional(readOnly = true)
     public Result getAddCharacter(){
